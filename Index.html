@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tri Ân Thầy Cô - Ngày Nhà Giáo Việt Nam 20/11</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-burgundy: #6a1b29;
+            --bg-burgundy-dark: #4a151c;
+            --bg-cream: #fcf9f2;
+            --text-dark: #332219;
+            --text-muted: #7a6555;
+            --accent-gold: #c5a059;
+            --border-cream: #e6ded1;
+            --ease-custom: cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        body {
+            background-color: var(--bg-burgundy);
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Hiệu ứng hạt bay nền */
+        #particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.25);
+            font-size: 14px;
+            animation: fallLinear linear infinite;
+            user-select: none;
+        }
+
+        @keyframes fallLinear {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Container chính */
+        .wrapper {
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ==================== STATE 01: BÌA THIỆP / PHONG BÌ ==================== */
+        .envelope-card {
+            background-color: var(--bg-cream);
+            border-radius: 8px;
+            padding: 40px 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            border: 1px solid var(--border-cream);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.8s var(--ease-custom);
+        }
+
+        .envelope-card.hide {
+            opacity: 0;
+            transform: translateY(-40px) scale(0.95);
+            pointer-events: none;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        /* Trang trí hoa lá góc */
+        .floral-corner {
+            position: absolute;
+            font-size: 28px;
+            opacity: 0.35;
+            user-select: none;
+        }
+        .top-left { top: 15px; left: 15px; transform: rotate(-15deg); }
+        .top-right { top: 15px; right: 15px; transform: rotate(15deg); }
+
+        .preview-badge {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-gold);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 17px;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        .divider {
+            width: 60px;
+            height: 1px;
+            background-color: var(--accent-gold);
+            margin: 0 auto 25px auto;
+        }
+
+        /* Con dấu sáp niêm phong (Wax Seal) */
+        .wax-seal-container {
+            margin: 30px 0;
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .wax-seal {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #8a2235, #52131f);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fcf9f2;
+            box-shadow: 0 6px 20px rgba(106, 27, 41, 0.4), inset 0 2px 5px rgba(255, 255, 255, 0.2);
+            border: 3px dashed rgba(212, 175, 55, 0.5);
+            transition: all 0.4s ease;
+            position: relative;
+            animation: pulseSeal 2s infinite ease-in-out;
+        }
+
+        .wax-seal:hover {
+            transform: scale(1.08) rotate(5deg);
+            box-shadow: 0 8px 25px rgba(106, 27, 41, 0.6);
+        }
+
+        .wax-seal span {
+            font-size: 12px;
+            letter-spacing: 1px;
+            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .wax-seal small {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+        @keyframes pulseSeal {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .open-instruction {
+            font-size: 13px;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+
+        /* ==================== STATE 02: NỘI DUNG THIỆP CHÍNH ==================== */
+        .main-card-content {
+            background-color: var(--bg-cream);
+            border-radius: 8px;
+            padding: 45px 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border-cream);
+            opacity: 0;
+            transform: translateY(40px) scale(0.95);
+            pointer-events: none;
+            display: none;
+            transition: all 0.8s var(--ease-custom);
+            position: relative;
+        }
+
+        .main-card-content.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+            display: block;
+        }
+
+        .letter-body {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #554438;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        /* Album ảnh kỷ niệm */
+        .gallery-section {
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .gallery-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1/1;
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.04);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Hiệu ứng pháo hoa cánh hoa (Confetti Explosion) */
+        .confetti-piece {
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            background-color: #d4af37;
+            position: absolute;
+            pointer-events: none;
+            z-index: 999;
+            opacity: 1;
+            animation: explode 1s ease-out forwards;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: translate(0, 0) scale(1) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(0.3) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Nút âm nhạc ở góc dưới bên phải (Right Bottom Music Toggle) */
+        .music-toggle-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 50px;
+            height: 50px;
+            background: rgba(252, 249, 242, 0.9);
+            border: 2px solid var(--accent-gold);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1001;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .music-toggle-btn:hover {
+            transform: scale(1.1);
+            background: #fff;
+        }
+
+        /* Hiệu ứng xoay tròn khi đang phát nhạc */
+        .music-toggle-btn.playing {
+            animation: spinMusic 4s linear infinite;
+        }
+
+        @keyframes spinMusic {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Modal xem ảnh phóng to */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(20, 5, 8, 0.8);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            padding: 20px;
+        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal-content {
+            max-width: 500px;
+            width: 100%;
+            background: var(--bg-cream);
+            padding: 20px;
+            border-radius: 6px;
+            text-align: center;
+            position: relative;
+        }
+        .modal-content img { width: 100%; max-height: 350px; object-fit: cover; border-radius: 4px; margin-top: 10px; }
+        .close-modal { position: absolute; top: 10px; right: 15px; background: none; border: none; font-size: 22px; cursor: pointer; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+
+    <!-- Lớp hạt bay nền động -->
+    <div id="particles-container"></div>
+
+    <!-- Nút âm nhạc góc dưới bên phải -->
+    <div class="music-toggle-btn" id="musicToggleBtn" onclick="toggleMusic()" title="Bật/Tắt nhạc nền">
+        🎵
+    </div>
+
+    <!-- Audio Element (Sử dụng nhạc nền không bản quyền nhẹ nhàng, có thể thay đổi đường dẫn src) -->
+    <audio id="bgMusic" loop>
+        <source src="nhac-nen.mp3" type="audio/mpeg">
+        Trình duyệt của bạn không hỗ trợ thẻ audio.
+    </audio>
+
+    <div class="wrapper">
+        <!-- STATE 01: BÌA THIỆP & CON DẤU SÁP -->
+        <div class="envelope-card" id="envelopeScreen">
+            <div class="floral-corner top-left">🌸</div>
+            <div class="floral-corner top-right">🌿</div>
+
+            <div class="preview-badge">Tri Ân Ngày Nhà Giáo Việt Nam</div>
+            <h1>Thiệp Mừng 20/11</h1>
+            <div class="subtitle">Món quà tri ân gửi đến những người lái đò thầm lặng</div>
+            
+            <div class="divider"></div>
+
+            <!-- Con dấu sáp bấm mở thiệp -->
+            <div class="wax-seal-container" onclick="openCard(event)">
+                <div class="wax-seal">
+                    <span>20/11</span>
+                    <small>Mở Thiệp</small>
+                </div>
+            </div>
+            <div class="open-instruction">Nhấn vào con dấu để mở thiệp</div>
+        </div>
+
+        <!-- STATE 02: NỘI DUNG CHÍNH (LỜI CHÚC & ALBUM ẢNH) -->
+        <div class="main-card-content" id="mainCardContent">
+            <div class="floral-corner top-left">🌹</div>
+            <div class="floral-corner top-right">✨</div>
+
+            <h1>Lời Tri Ân Sâu Sắc</h1>
+            <div class="subtitle">Kính chúc các thầy cô luôn tràn đầy sức khỏe và hạnh phúc</div>
+            <div class="divider"></div>
+
+            <div class="letter-body">
+                <p>Nhân ngày Nhà giáo Việt Nam 20/11, chúng em xin gửi những lời chúc tốt đẹp nhất và lòng biết ơn chân thành sâu sắc đến các thế hệ thầy cô – những người lái đò cần mẫn đưa bao thế hệ học trò cập bến bờ tri thức.</p>
+                <p>Kính chúc thầy cô luôn dồi dào sức khỏe, bình an và giữ mãi ngọn lửa đam mê với sự nghiệp trồng người cao quý!</p>
+            </div>
+
+            <!-- Album ảnh kỷ niệm -->
+            <div class="gallery-section">
+                <div class="gallery-title">📸 Khoảnh Khắc Tri Ân</div>
+                <div class="gallery-grid">
+                    <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&auto=format&fit=crop', 'Lớp học thân yêu')">
+                        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=300&auto=format&fit=crop" alt="Class">
+                    </div>
+                    <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&auto=format&fit=crop', 'Giờ học nhiệt huyết')">
+                        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=300&auto=format&fit=crop" alt="Lesson">
+                    </div>
+                    <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1577896851231-70ef18881754?w=600&auto=format&fit=crop', 'Nụ cười thầy cô')">
+                        <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=300&auto=format&fit=crop" alt="Teacher">
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 35px; font-style: italic; color: var(--text-muted); font-size: 14px; text-align: center;">
+                — Trân trọng —
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal phóng to ảnh -->
+    <div class="modal-overlay" id="imageModal" onclick="closeModal(event)">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModalDirect()">&times;</button>
+            <div id="modalCaption" style="font-family: 'Playfair Display', serif; font-size: 16px; margin-bottom: 10px; color: var(--text-dark);"></div>
+            <img id="modalImg" src="" alt="Zoomed">
+        </div>
+    </div>
+
+    <!-- JavaScript xử lý tương tác, hiệu ứng & âm nhạc -->
+    <script>
+        // 1. Khởi tạo hạt bay nền ngẫu nhiên
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('particles-container');
+            const symbols = ['♥', '🌸', '✨', '•'];
+            for (let i = 0; i < 18; i++) {
+                const p = document.createElement('div');
+                p.classList.add('particle');
+                p.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+                p.style.left = Math.random() * 100 + 'vw';
+                p.style.animationDuration = (Math.random() * 6 + 6) + 's';
+                p.style.animationDelay = (Math.random() * 5) + 's';
+                p.style.fontSize = (Math.random() * 8 + 10) + 'px';
+                container.appendChild(p);
+            }
+        });
+
+        // 2. Hiệu ứng mở thiệp, phát nhạc & Pháo hoa cánh hoa (Confetti Explosion)
+        function openCard(event) {
+            const rect = event.currentTarget.getBoundingClientRect();
+            const originX = rect.left + rect.width / 2;
+            const originY = rect.top + rect.height / 2;
+
+            // Tạo hiệu ứng bung hạt
+            createConfettiExplosion(originX, originY);
+
+            // Bật nhạc nền tự động khi mở thiệp
+            const audio = document.getElementById('bgMusic');
+            const musicBtn = document.getElementById('musicToggleBtn');
+            audio.play().then(() => {
+                musicBtn.classList.add('playing');
+            }).catch(error => {
+                console.log("Trình duyệt chặn autoplay audio, người dùng có thể bật thủ công qua nút góc phải.");
+            });
+
+            // Chuyển cảnh giao diện mượt mà
+            const envelope = document.getElementById('envelopeScreen');
+            const mainContent = document.getElementById('mainCardContent');
+
+            envelope.classList.add('hide');
+            setTimeout(() => {
+                envelope.style.display = 'none';
+                mainContent.classList.add('active');
+            }, 400);
+        }
+
+        function createConfettiExplosion(x, y) {
+            const colors = ['#d4af37', '#e26d5c', '#6a1b29', '#ffffff', '#b59b84'];
+            const particleCount = 35;
+
+            for (let i = 0; i < particleCount; i++) {
+                const p = document.createElement('div');
+                p.classList.add('confetti-piece');
+                
+                p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                p.style.left = x + 'px';
+                p.style.top = y + 'px';
+                
+                const angle = Math.random() * Math.PI * 2;
+                const distance = Math.random() * 160 + 60;
+                const tx = Math.cos(angle) * distance;
+                const ty = Math.sin(angle) * distance;
+
+                p.style.setProperty('--tx', `${tx}px`);
+                p.style.setProperty('--ty', `${ty}px`);
+                p.style.width = (Math.random() * 8 + 6) + 'px';
+                p.style.height = p.style.width;
+                p.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+
+                document.body.appendChild(p);
+                setTimeout(() => p.remove(), 1000);
+            }
+        }
+
+        // 3. Điều khiển bật/tắt nhạc qua nút ở góc phải dưới
+        function toggleMusic() {
+            const audio = document.getElementById('bgMusic');
+            const musicBtn = document.getElementById('musicToggleBtn');
+
+            if (audio.paused) {
+                audio.play();
+                musicBtn.classList.add('playing');
+            } else {
+                audio.pause();
+                musicBtn.classList.remove('playing');
+            }
+        }
+
+        // 4. Modal xem ảnh chi tiết
+        function openModal(src, caption) {
+            const modal = document.getElementById('imageModal');
+            document.getElementById('modalImg').src = src;
+            document.getElementById('modalCaption').innerText = caption;
+            modal.classList.add('active');
+        }
+
+        function closeModal(e) {
+            if (e.target.id === 'imageModal') {
+                document.getElementById('imageModal').classList.remove('active');
+            }
+        }
+
+        function closeModalDirect() {
+            document.getElementById('imageModal').classList.remove('active');
+        }
+    </script>
+</body>
+</html>
